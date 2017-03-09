@@ -4,7 +4,7 @@ import (
 	"net/http"
 
 	"github.com/labstack/echo"
-	"github.com/michelaquino/rabbit_mq_test/context"
+	"github.com/michelaquino/rabbit_mq_test/producer/context"
 )
 
 func main() {
