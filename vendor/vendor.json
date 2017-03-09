@@ -64,6 +64,13 @@
 			"revisionTime": "2016-11-23T14:36:37Z"
 		},
 		{
+			"checksumSHA1": "eULj4K2FdRKVPVj/JbmP37Q9NiU=",
+			"path": "github.com/streadway/amqp",
+			"revision": "ce1c69d94c3efdb1f287015f851b17db8fa205b1",
+			"revisionTime": "2017-03-03T13:53:37Z",
+			"tree": true
+		},
+		{
 			"checksumSHA1": "BQp8/DuU9TuTIVhRb+hWQ6jnNfw=",
 			"path": "github.com/tylerb/graceful",
 			"revision": "d37e108c89765a8e307f15b8fb2ecd10575da6bb",
