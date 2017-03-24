@@ -1,14 +1,21 @@
 version: '2'
 services:
+    consumer:
+        build: ./consumer
+        depends_on:
+            - rabbitmq
+        environment:
+            - RABBIT_MQ_URL=rabbitmq
     producer:
         build: ./producer
         ports: 
-            - 8080:8888
+            - 8888:8888
         depends_on:
             - rabbitmq
         environment:
             - LOG_LEVEL=debug
             - LOG_FILE_NAME=api.log
             - LOG_TO_STDOUT=true
+            - RABBIT_MQ_URL=rabbitmq
     rabbitmq:
         image: rabbitmq:3.6
