@@ -13,7 +13,7 @@ func main() {
 	logger := apiContext.GetLogger()
 
 	e := echo.New()
-	e.GET("/sendMessage", func(c echo.Context) error {
+	e.POST("/sendMessage", func(c echo.Context) error {
 		model.SendMessageToQueue()
 
 		return c.String(http.StatusOK, "Message sended")
