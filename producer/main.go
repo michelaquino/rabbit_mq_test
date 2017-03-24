@@ -5,6 +5,7 @@ import (
 
 	"github.com/labstack/echo"
 	"github.com/michelaquino/rabbit_mq_test/producer/context"
+	"github.com/michelaquino/rabbit_mq_test/producer/model"
 )
 
 func main() {
@@ -12,8 +13,10 @@ func main() {
 	logger := apiContext.GetLogger()
 
 	e := echo.New()
-	e.GET("/", func(c echo.Context) error {
-		return c.String(http.StatusOK, "Hello, World!")
+	e.GET("/sendMessage", func(c echo.Context) error {
+		model.SendMessageToQueue()
+
+		return c.String(http.StatusOK, "Message sended")
 	})
 
 	logger.Info("Started at port 8888!")
