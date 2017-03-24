@@ -10,15 +10,22 @@ import (
 
 func failOnError(err error, msg string) {
 	if err != nil {
-		log.Fatalf("%s: %s", msg, err)
+		fmt.Printf("%s: %s", msg, err)
 	}
 }
 
 func main() {
 	urlToConnect := os.Getenv("RABBIT_MQ_URL")
 
-	conn, err := amqp.Dial(fmt.Sprintf("amqp://guest:guest@%s:5672/", urlToConnect))
-	failOnError(err, "Failed to connect to RabbitMQ")
+	var conn *amqp.Connection
+	var err error
+	for {
+		conn, err = amqp.Dial(fmt.Sprintf("amqp://guest:guest@%s:5672/", urlToConnect))
+		if err == nil {
+			break
+		}
+	}
+
 	defer conn.Close()
 
 	ch, err := conn.Channel()
