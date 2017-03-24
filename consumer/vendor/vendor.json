@@ -1,0 +1,14 @@
+{
+	"comment": "",
+	"ignore": "test",
+	"package": [
+		{
+			"checksumSHA1": "tcvim8bIDaBprgMKlSyFk0m337s=",
+			"path": "github.com/streadway/amqp",
+			"revision": "afe8eee29a74d213b1f3fb2586058157c397da60",
+			"revisionTime": "2017-03-13T17:48:48Z",
+			"tree": true
+		}
+	],
+	"rootPath": "github.com/michelaquino/rabbit_mq_test/consumer"
+}
