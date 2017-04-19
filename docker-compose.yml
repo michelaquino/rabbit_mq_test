@@ -1,6 +1,12 @@
 version: '2'
 services:
-    consumer:
+    consumer_1:
+        build: ./consumer
+        depends_on:
+            - rabbitmq
+        environment:
+            - RABBIT_MQ_URL=rabbitmq
+    consumer_2:
         build: ./consumer
         depends_on:
             - rabbitmq

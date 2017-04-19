@@ -14,7 +14,7 @@ func failOnError(err error, msg string) {
 	}
 }
 
-func SendMessageToQueue() {
+func SendMessageToQueue(messageToEnqueue string) {
 	urlToConnect := os.Getenv("RABBIT_MQ_URL")
 
 	conn, err := amqp.Dial(fmt.Sprintf("amqp://guest:guest@%s:5672/", urlToConnect))
@@ -35,7 +35,6 @@ func SendMessageToQueue() {
 	)
 	failOnError(err, "Failed to declare a queue")
 
-	body := "hello"
 	err = ch.Publish(
 		"",     // exchange
 		q.Name, // routing key
@@ -43,8 +42,8 @@ func SendMessageToQueue() {
 		false,  // immediate
 		amqp.Publishing{
 			ContentType: "text/plain",
-			Body:        []byte(body),
+			Body:        []byte(messageToEnqueue),
 		})
-	log.Printf(" [x] Sent %s", body)
+	log.Printf(" [x] Sent message: %s", messageToEnqueue)
 	failOnError(err, "Failed to publish a message")
 }
